@@ -2,7 +2,7 @@ import { NETWORKS } from './config'
 import { ethers, utils } from 'ethers'
 import type { Method } from '../types/entities'
 
-export const getExplorerAddressUrl = (address: string, network = 'mainnet'): string => {
+export const getExplorerAddressUrl = (address: string, network = 'localhost'): string => {
   return `${NETWORKS[network].explorerUrl}/address/${address}`
 }
 
@@ -10,7 +10,7 @@ export const getExplorerTxUrl = (hash: string, network: string): string => {
   return `${NETWORKS[network].explorerUrl}/tx/${hash}`
 }
 
-export const getVerifyContractUrl = (address: string, network = 'mainnet'): string => {
+export const getVerifyContractUrl = (address: string, network = 'localhost'): string => {
   return `${NETWORKS[network].explorerUrl}/verifyContract?a=${address}`
 }
 

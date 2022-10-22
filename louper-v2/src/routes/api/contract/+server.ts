@@ -20,7 +20,7 @@ export const POST: RequestHandler<void, { network: string; address: string }> = 
   request,
 }) => {
   const body = await request.json()
-  const network = body.network.toLowerCase() || 'mainnet'
+  const network = body.network.toLowerCase() || 'localhost'
   const address = body.address.toLowerCase()
 
   const API_KEY = getEtherscanApiKey(network)

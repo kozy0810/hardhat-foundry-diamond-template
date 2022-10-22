@@ -14,7 +14,7 @@ export const POST: RequestHandler<
 > = async ({ request }) => {
   const body = await request.json()
   console.info(
-    `Reading contract data for 💎 diamond at ${body.address} on ${body.network || 'mainnet'}`,
+    `Reading contract data for 💎 diamond at ${body.address} on ${body.network || 'localhost'}`,
   )
 
   const address = body.address.toLowerCase()
@@ -23,7 +23,7 @@ export const POST: RequestHandler<
   abi.push(fragment)
   const args = body.args
 
-  let rpcUrl = body.network ? NETWORKS[body.network].rpcUrl : NETWORKS['mainnet'].rpcUrl
+  let rpcUrl = body.network ? NETWORKS[body.network].rpcUrl : NETWORKS['localhost'].rpcUrl
   rpcUrl = rpcUrl.replace('%INFURA_API_KEY%', INFURA_API_KEY)
   const provider = new ethers.providers.JsonRpcProvider(rpcUrl)
   const diamondContract = new ethers.Contract(address, abi, provider)

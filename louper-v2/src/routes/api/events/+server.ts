@@ -16,33 +16,33 @@ export const POST: RequestHandler<void, { network: string; address: string }> = 
   request,
 }) => {
   const body = await request.json()
-  console.info(`Fetching events for 💎 diamond at ${body.address} on ${body.network || 'mainnet'}`)
+  console.info(`Fetching events for 💎 diamond at ${body.address} on ${body.network || 'localhost'}`)
   const address = body.address.toLowerCase()
   const network = body.network.toLowerCase()
 
   const API_KEY = getEtherscanApiKey(network)
 
   const apiUrl = NETWORKS[network].explorerApiUrl
-  if (apiUrl) {
-    const fullUrl = `${apiUrl}?module=logs&action=getLogs&fromBlock=0&address=${address}&topic0=${topic}&apikey=${API_KEY}`
-    console.log(fullUrl)
-    const resp = await axios.get(fullUrl)
+  // if (apiUrl) {
+  //   const fullUrl = `${apiUrl}?module=logs&action=getLogs&fromBlock=0&address=${address}&topic0=${topic}&apikey=${API_KEY}`
+  //   console.log(fullUrl)
+  //   const resp = await axios.get(fullUrl)
 
-    const louperEvents: LouperEvent[] = []
+  //   const louperEvents: LouperEvent[] = []
 
-    if (resp.data) {
-      const iface = new ethers.utils.Interface(abi)
-      for (let i = 0; i < resp.data.result.length; i++) {
-        const louperEvent: LouperEvent = {
-          ...iface.decodeEventLog('DiamondCut', resp.data.result[i].data),
-          timestamp: parseInt(resp.data.result[i].timeStamp, 16),
-          txHash: resp.data.result[i].transactionHash,
-        }
-        louperEvents.push(louperEvent)
-      }
-    }
-    return json(louperEvents)
-  }
+  //   if (resp.data) {
+  //     const iface = new ethers.utils.Interface(abi)
+  //     for (let i = 0; i < resp.data.result.length; i++) {
+  //       const louperEvent: LouperEvent = {
+  //         ...iface.decodeEventLog('DiamondCut', resp.data.result[i].data),
+  //         timestamp: parseInt(resp.data.result[i].timeStamp, 16),
+  //         txHash: resp.data.result[i].transactionHash,
+  //       }
+  //       louperEvents.push(louperEvent)
+  //     }
+  //   }
+  //   return json(louperEvents)
+  // }
 
   // const louperEvents: LouperEvent[] = []
   //

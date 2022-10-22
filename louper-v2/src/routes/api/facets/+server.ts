@@ -14,10 +14,10 @@ export const POST: RequestHandler<void, { network: string; address: string }> = 
   request,
 }) => {
   const body = await request.json()
-  console.info(`Fetching data for 💎 diamond at ${body.address} on ${body.network || 'mainnet'}`)
+  console.info(`Fetching data for 💎 diamond at ${body.address} on ${body.network || 'localhost'}`)
   const address = body.address.toLowerCase()
 
-  let rpcUrl = body.network ? NETWORKS[body.network].rpcUrl : NETWORKS['mainnet'].rpcUrl
+  let rpcUrl = body.network ? NETWORKS[body.network].rpcUrl : NETWORKS['localhost'].rpcUrl
   rpcUrl = rpcUrl.replace('%INFURA_API_KEY%', INFURA_API_KEY)
   const provider = new ethers.providers.JsonRpcProvider(rpcUrl)
   const diamondContract = new ethers.Contract(address, abi, provider)

@@ -3,7 +3,7 @@
   import { NETWORKS } from '$lib/config'
 
   export let address = ''
-  export let network = 'mainnet'
+  export let network = 'localhost'
 </script>
 
 <div class="card flex flex-col justify-around h-full bg-base-200 shadow-xl">

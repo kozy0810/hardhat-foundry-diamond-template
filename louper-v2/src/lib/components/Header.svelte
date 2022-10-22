@@ -3,7 +3,7 @@
   import Sponsor from './Sponsor.svelte'
 
   export let address = ''
-  export let network = 'mainnet'
+  export let network = 'localhost'
 </script>
 
 <div class="lg:flex lg: flex-row lg:space-x-3 space-y-2">
