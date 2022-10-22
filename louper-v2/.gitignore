@@ -1,0 +1,11 @@
+.DS_Store
+node_modules
+/build
+/.svelte-kit
+/package
+.env
+.vercel_build_output
+# Supabase
+**/supabase/.branches
+**/supabase/.temp
+.vercel
