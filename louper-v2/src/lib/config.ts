@@ -238,6 +238,6 @@ export const NETWORKS: Record<string, Network> = {
     explorerUrl: 'http://127.0.0.1:8545',
     explorerApiUrl: 'http://127.0.0.1:8545',
     emoji: '💎',
-    chainId: '1337',
+    chainId: '31337',
   },
 }
